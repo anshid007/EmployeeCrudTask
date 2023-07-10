@@ -1,0 +1,185 @@
+﻿
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/demo.js"></script>
+
+
+<h1>Index</h1>
+
+
+<h3>Employee Registeration</h3>
+<a class="btn btn-success text-end mb-3 mt-3" id="btnEmpcreate">Create</a>
+
+<table class="table table-bordered text-center">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Gender</th>
+            <th class="d-none">Department</th>
+            <th>DepartmentName</th>
+            <th>Operations</th>
+        </tr>
+
+    </thead>
+    <tbody id="tableEmp_data">
+    </tbody>
+</table>
+
+
+
+<!-- Insert Modal -->
+
+<div class="modal" tabindex="-1" role="dialog" id="createEmployeeModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+                <form method="post" name="form" onsubmit="validateFormEmployeeCreate()">
+
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="txtempnamecreate" name="name" class="form-control" />
+                    </div><br />
+
+                    <div class="form-group">
+                        <label>E-Mail</label>
+                        <input type="email" id="txtempemailcreate" name="email" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mobile</label>
+                        <input type="text" id="txtempmob" name="mobile" class="form-control" />
+                    </div><br />
+
+                    <div class="form-group">
+                        <label>Gender :</label>
+                        <input type="radio" name="gender" value="Male">
+                        <label>Male</label>
+                        <input type="radio"  name="gender" value="Female">
+                        <label>Female</label><br>
+                    </div><br />
+                    <div class="form-group">
+                        <label>Department</label>
+                        <select id="dropdownList"></select>
+                    </div>
+                    <input type="submit" value="Submit"  class="btn btn-primary" />
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div> 
+
+<script>
+   
+</script>
+
+
+<!-- Update Modal -->
+<div class="modal" tabindex="-1" role="dialog" id="editempModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" name="form" onsubmit="validateFormEmployeeUpdate()">
+
+                 
+
+                    <div class="form-group">
+                        <input type="text" id="txtempIdupdate" name="code" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="txtempnameupdate" name="name" class="form-control" />
+                    </div><br />
+
+                    <div class="form-group">
+                        <label>E-Mail</label>
+                        <input type="email" id="txtempemailupdate" name="email" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mobile</label>
+                        <input type="text" id="txtempmobupdate" name="mobile" class="form-control" />
+                    </div><br />
+
+                   
+                    <div class="form-group">
+                        <label>Gender :</label>
+                        <input type="radio" name="genderedit" value="Male">
+                        <label>Male</label>
+                        <input type="radio"  name="genderedit" value="Female">
+                        <label>Female</label><br>
+                    </div><br />
+
+                    <div class="form-group">
+                        <label>Department</label>
+                        <select id="dropdownListedit"></select>
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*
+Delete*@
+
+<div class="modal" tabindex="-1" role="dialog" id="modalempDelete">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" onsubmit="validateform()">
+                    <div class="form-group">
+                        <input type="text" id="txtempidDelete" name="id" class="form-control " />
+                    </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="txtempnameDelete" name="name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" id="txtempemailDelete" name="email" class="form-control" />
+                    </div><br />
+                    <div class="form-group">
+                        <label>Mobile</label>
+                        <input type="text" id="txtempmobileDelete" name="mobile" class="form-control" />
+                    </div><br />
+                </form>
+                <button type="button" id="btnempDelete" class="btn btn-primary">Delete</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
